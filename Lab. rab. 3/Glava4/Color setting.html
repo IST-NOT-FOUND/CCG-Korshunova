@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGL</title>
+    <meta charset="utf-8" />
+    <script src="../../js/Glava4. Color setting.js"></script>
+</head>
+<body>
+<h1>Лабораторная работа №3. Глава 4. Цвета в WebGL. Установка цвета вершины<h1>
+<canvas id="canvas3D" width="400" height="300">Ваш браузер не поддерживает элемент canvas</canvas>
+<script id="shader-fs" type="x-shader/x-fragment">
+varying highp vec4 vColor;
+  void main(void) {
+    gl_FragColor = vColor;
+  }
+</script>
+<script id="shader-vs" type="x-shader/x-vertex">
+attribute vec3 aVertexPosition;
+attribute vec3 aVertexColor;
+varying highp vec4 vColor;
+void main(void) {
+    gl_Position = vec4(aVertexPosition, 1.0);
+    vColor = vec4(aVertexColor, 1.0);
+}
+</script>
+</body>
+</html>
