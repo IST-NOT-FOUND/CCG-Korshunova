@@ -1,120 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<title>Привет WebGL!</title>
-<meta charset="utf-8">
+    <title>Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ СЂР°Р±РѕС‚С‹ - CGG</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<canvas id="canvas3D" width="400" height="300">Ваш браузер не поддерживает элемент
-canvas</canvas>
-<!-- фрагментный шейдер -->
-<script id="shader-fs" type="x-shader/x-fragment">
-void main(void) {
-gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-}
-</script> 
-<!-- вершинный шейдер -->
-<script id="shader-vs" type="x-shader/x-vertex">
-attribute vec3 aVertexPosition;
-void main(void) {
-gl_Position = vec4(aVertexPosition, 1.0);
-}
-</script>
-<script type="text/javascript">
-var gl;
-var shaderProgram;
-var vertexBuffer;
-// установка шейдеров
-function initShaders() {
-// получаем шейдеры
-var fragmentShader = getShader(gl.FRAGMENT_SHADER, 'shader-fs');
-var vertexShader = getShader(gl.VERTEX_SHADER, 'shader-vs');
-//создаем объект программы шейдеров
-shaderProgram = gl.createProgram();
-// прикрепляем к ней шейдеры
-gl.attachShader(shaderProgram, vertexShader);
-gl.attachShader(shaderProgram, fragmentShader);
-// связываем программу с контекстом webgl
-gl.linkProgram(shaderProgram);
-if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-alert("Не удалсь установить шейдеры");
-}
-gl.useProgram(shaderProgram); 
-// установка атрибута программы
-shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
-// подключаем атрибут для использования
-gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
-}
-// Функция создания шейдера по типу и id источника в структуре DOM
-function getShader(type,id) {
-var source = document.getElementById(id).innerHTML;
-// создаем шейдер по типу
-var shader = gl.createShader(type);
-// установка источника шейдера
-gl.shaderSource(shader, source);
-// компилируем шейдер
-gl.compileShader(shader);
-if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-alert("Ошибка компиляции шейдера: " + gl.getShaderInfoLog(shader));
-gl.deleteShader(shader); 
-return null;
-}
-return shader;  
-}
-// установка буфера вершин 
-function initBuffers() {
-// установка буфера вершин
-vertexBuffer = gl.createBuffer();
-gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-// массив координат вершин объекта
-var triangleVertices = [ 
-0.0,  0.5,  0.0,
--0.5, -0.5,  0.0,
-0.5, -0.5,  0.0
-];
-gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(triangleVertices), gl.STATIC_DRAW);
-// указываем кол-во точек
-vertexBuffer.itemSize = 3;
-vertexBuffer.numberOfItems = 3;
-}
-// отрисовка 
-function draw() { 
-// установка области отрисовки
-gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
-gl.clear(gl.COLOR_BUFFER_BIT);
-// указываем, что каждая вершина имеет по три координаты (x, y, z)
-gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
-vertexBuffer.itemSize, gl.FLOAT, false, 0, 0);
-// отрисовка примитивов - треугольников   
-gl.drawArrays(gl.TRIANGLES, 0, vertexBuffer.numberOfItems);
-}
-window.onload=function(){
-// получаем элемент canvas
-var canvas = document.getElementById("canvas3D");
-try {
-// Сначала пытаемся получить стандартный контекст WegGK. 
-// Если не получится, обращаемся к экспериментальному контексту 
-gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-}
-catch(e) {}
-// Если контекст не удалось получить, выводим сообщение
-if (!gl) {
-alert("Ваш браузер не поддерживает WebGL");
-}
-if(gl){
-// установка размеров области рисования
-gl.viewportWidth = canvas.width;
-gl.viewportHeight = canvas.height;
-// установка шейдеров 
-initShaders();
-// установка буфера вершин
-initBuffers();
-// покрасим в красный цвет фон
-gl.clearColor(1.0, 0.0, 0.0, 1.0);
-// отрисовка сцены
-draw(); 
-}
-}
-</script>
+
+<div class="container">
+<h3>Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ СЂР°Р±РѕС‚С‹ РїРѕ РґРёСЃС†РёРїР»РёРЅРµ "РљРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ РіРµРѕРјРµС‚СЂРёСЏ Рё РіСЂР°С„РёРєР°</h3>
+<p>Р’С‹РїРѕР»РЅРёР» СЃС‚СѓРґРµРЅС‚ РіСЂСѓРїРїС‹ РРЎРў-404 РљРѕСЂС€СѓРЅРѕРІР° РђРЅР°СЃС‚Р°СЃРёСЏ</p>
+<ul class="nav nav-pills nav-stacked">
+    <li><a href="Lab.%20rab.%201">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–1. Р“Р»Р°РІР° 1. Р’РІРµРґРµРЅРёРµ РІ WebGL + Р“Р»Р°РІР° 2. РћСЃРЅРѕРІС‹ СЂР°Р±РѕС‚С‹ СЃ WebGL</a></li>
+    <li><a href="Lab.%20rab.%202">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–2. Р“Р»Р°РІР° 3. РЁРµР№РґРµСЂС‹</a></li>
+    <li><a href="Lab.%20rab.%203">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–3. Р“Р»Р°РІР° 4. Р¦РІРµС‚Р° РІ WebGL</a></li>
+    <li><a href="Lab.%20rab.%204">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–4. Р“Р»Р°РІР° 5. РњР°С‚СЂРёС†Р° Рё СЃРѕР·РґР°РЅРёРµ 3D</a></li>
+    <li><a href="Lab.%20rab.%205">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–5. Р“Р»Р°РІР° 6. РђРЅРёРјР°С†РёСЏ Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ</a></li>
+    <li><a href="Lab.%20rab.%206">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–6. Р“Р»Р°РІР° 7. РўРµРєcС‚СѓСЂРёСЂРѕРІР°РЅРёРµ</a></li>
+    <li><a href="Lab.%20rab.%207">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ СЂР°Р±РѕС‚Р° в„–7. Р“Р»Р°РІР° 8. РћСЃРІРµС‰РµРЅРёРµ</a></li>
+</ul>
+</div>
+
 </body>
 </html>
