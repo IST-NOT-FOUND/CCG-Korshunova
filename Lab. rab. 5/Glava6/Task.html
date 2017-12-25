@@ -1,0 +1,28 @@
+<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Привет WebGL!</title>
+    </head>
+    <body>
+    <h1>Задание. Добавит кнопки W, A, S, D для управления кубом, аналогично управлению стрелками</h1>
+    <canvas id="canvas3D" width="400" height="300">Ваш браузер не поддерживает элемент canvas</canvas>
+    <script  type="text/javascript" src="../../js/gl-matrix-min.js"></script>
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+  void main(void) {
+    gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+  }
+</script>
+
+    <script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+   uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  void main(void) {
+     gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }
+</script>
+    <script src="../../js/Glava6.%20Task.js"></script>
+    </body>
+    </html>
