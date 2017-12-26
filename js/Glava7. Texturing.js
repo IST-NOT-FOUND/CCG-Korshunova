@@ -3,7 +3,7 @@ var shaderProgram;
 var vertexBuffer;
 var indexBuffer;
 
-var texture; // переменная для хранения текстуры
+var texture;
 
 function initShaders() {
     var fragmentShader = getShader(gl.FRAGMENT_SHADER, 'shader-fs');
@@ -26,7 +26,7 @@ function initShaders() {
     gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
 }
 
-// Функция создания шейдера
+
 function getShader(type,id) {
     var source = document.getElementById(id).innerHTML;
 
@@ -94,7 +94,7 @@ function setTextures(){
         setupWebGL();
         draw();
     }
-    image.src = "../../image/wall.png";
+    image.src = '../../image/wall.png';
 
     shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
     gl.uniform1i(shaderProgram.samplerUniform, 0);
@@ -109,22 +109,22 @@ function handleTextureLoaded(image, texture) {
 }
 window.onload=function(){
 
-        var canvas = document.getElementById("canvas3D");
-        try {
-            gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-        }
-        catch(e) {}
-
-        if (!gl) {
-            alert("Ваш браузер не поддерживает WebGL");
-        }
-        if(gl){
-            gl.viewportWidth = canvas.width;
-            gl.viewportHeight = canvas.height;
-
-            initShaders();
-            initBuffers();
-
-            setTextures();
-        }
+    var canvas = document.getElementById("canvas3D");
+    try {
+        gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     }
+    catch(e) {}
+
+    if (!gl) {
+        alert("Ваш браузер не поддерживает WebGL");
+    }
+    if(gl){
+        gl.viewportWidth = canvas.width;
+        gl.viewportHeight = canvas.height;
+
+        initShaders();
+        initBuffers();
+
+        setTextures();
+    }
+}
